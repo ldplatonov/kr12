@@ -42,21 +42,15 @@
             const M = parseFloat(document.getElementById('M').value);
 
             
-            const Vcube = A ** 3;
-            const Vcyl = Math.PI * R ** 2 * H;
+            const equal = A + H == M + R
 
             
             let result;
-            if (M <= Vcube && M <= Vcyl) {
-                result = "Жидкость помещается в обе ёмкости.";
-            } else if (M <= Vcube) {
-                result = "Жидкость помещается только в кубическую ёмкость.";
-            } else if (M <= Vcyl) {
-                result = "Жидкость помещается только в цилиндрическую ёмкость.";
+            if (equal){
+                result == "Равенство выполнено"
             } else {
-                result = "Жидкость не помещается ни в одну ёмкость.";
+                result == "Равенство не выполнено"
             }
-
             
             let out = document.getElementById('result');
             if (!out) {
@@ -69,5 +63,6 @@
     </script>
 
 </body>
+
 
 </html>
