@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Решение алгоритмической задачи</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">DOM_JS. Считываем информацию из DOM</a>
+            <br>
+            <a href="change.html">Изменяем кириллицу на латиницу по клику</a>
+            <br>
+            <a href="perstask.html">Решение алгоритмической задачи</a>
+        </nav>
+    </header>
+    <h2>Алгоритмическая задача</h2>
+    <p>Формулировка: Имеются две ёмкости: кубическая с ребром A, цилиндрическая с высотой H и радиусом основания R.
+        Определить, поместится ли жидкость объёма
+        M в первую ёмкость, во вторую, в обе.</p>
+    <ul>
+        <li>Введите ребро куба А: <input id="A" type="number" min="0"></li>
+        <li>Введите высоту H: <input id="H" type="number" min="0"></li>
+        <li>Введите радиус R: <input id="R" type="number" min="0"></li>
+        <li>Введите объем жидкости M: <input id="M" type="number" min="0"></li>
+    </ul>
+    <button id="calcBtn">Рассчитать</button>
+    <div id="result"></div>
+
+
+    <script>
+        const btns = document.getElementById('calcBtn');
+        btns.addEventListener('click', calculate);
+
+        function calculate() {
+            const A = parseFloat(document.getElementById('A').value);
+            const H = parseFloat(document.getElementById('H').value);
+            const R = parseFloat(document.getElementById('R').value);
+            const M = parseFloat(document.getElementById('M').value);
+
+            
+            const Vcube = A ** 3;
+            const Vcyl = Math.PI * R ** 2 * H;
+
+            
+            let result;
+            if (M <= Vcube && M <= Vcyl) {
+                result = "Жидкость помещается в обе ёмкости.";
+            } else if (M <= Vcube) {
+                result = "Жидкость помещается только в кубическую ёмкость.";
+            } else if (M <= Vcyl) {
+                result = "Жидкость помещается только в цилиндрическую ёмкость.";
+            } else {
+                result = "Жидкость не помещается ни в одну ёмкость.";
+            }
+
+            
+            let out = document.getElementById('result');
+            if (!out) {
+                out = document.createElement('p');
+                out.id = 'result';
+                document.body.appendChild(out);
+            }
+            out.innerText = `Результат: ${result}`;
+        }
+    </script>
+
+</body>
+
+</html>

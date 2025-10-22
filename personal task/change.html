@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменяем кириллицу на латиницу по клику</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html">DOM_JS. Считываем информацию из DOM</a>
+            <br>
+            <a href="change.html">Изменяем кириллицу на латиницу по клику</a>
+            <br>
+            <a href="perstask.html">Решение алгоритмической задачи</a>
+        </nav>
+    </header>
+
+    <section id="passport">
+        <h2>Паспорт</h2>
+        <p>Выдан: <span id="issued">ГУ МВД РОССИИ ПО Г. МОСКВА</span></p>
+        <p>Фамилия: <span id="sndname">Платонов</span></p>
+        <p>Имя: <span id="fstname">Лев</span></p>
+        <p>Отчество: <span id="surname">Дмитриевич</span></p>
+        <p>Год рождения: <span id="year">2006</span></p>
+        <p>Пол: <span id="gender">муж</span></p>
+        <p>Место рождения: <span id="area">Г. МОСКВА</span></p>
+        <br>
+        <button id="translitBtn">Click to show English version</button>
+
+
+    </section>
+    <script>
+        const btn = document.getElementById('translitBtn');
+        btn.addEventListener('click', changeLanguage)
+
+        let issued = document.getElementById('issued');
+        let sndname = document.getElementById('sndname');
+        let fstname = document.getElementById('fstname');
+        let surname = document.getElementById('surname');
+        let year = document.getElementById('year');
+        let gender = document.getElementById('gender');
+        let area = document.getElementById('area');
+
+        const eng = ['GU MVD RUSSIA for the city of Moscow', 'Platonov', 'Lev', 'Dmitrievich', '2006', 'M', 'Moscow']
+
+        const rus = ['ГУ МВД РОССИИ ПО Г. МОСКВА', 'Платонов', 'Лев', 'Дмитриевич', '2006', 'муж', 'Г. МОСКВА']
+
+        function changeLanguage() {
+            if (btn.innerText == 'Click to show English version') {
+                issued.innerHTML = eng[0];
+                sndname.innerText = eng[1];
+                fstname.innerText = eng[2];
+                surname.innerText = eng[3];
+                year.innerText = eng[4];
+                gender.innerText = eng[5];
+                area.innerHTML = eng[6];
+                btn.innerText = 'Вернуться к русской версии'
+            } else {
+                issued.innerHTML = rus[0];
+                sndname.innerText = rus[1];
+                fstname.innerText = rus[2];
+                surname.innerText = rus[3];
+                year.innerText = rus[4];
+                gender.innerText = rus[5];
+                area.innerHTML = rus[6];
+                btn.innerText = 'Click to show English version'
+            };
+        };
+    </script>
+</body>
+
+</html>
